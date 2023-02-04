@@ -1,0 +1,10 @@
+[package]
+name = "midi_to_keystrokes"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+enigo = "0.0.14"
+midir = { version = "0.9.1", features = ["jack"]}
