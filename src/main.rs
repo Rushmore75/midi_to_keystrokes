@@ -1,4 +1,5 @@
 use std::collections::VecDeque;
+use std::hint::black_box;
 use std::io::{stdin, stdout, Write};
 use std::error::Error;
 use std::sync::{RwLock, Arc};
@@ -72,6 +73,7 @@ fn read_midi(queue: Arc<RwLock<VecDeque<Stroke>>>) -> Result<MidiInputConnection
     let mut en = Enigo::new();
     let mut midi_to_keys: [Key; 100] = [Key::Home; 100];
 
+    // would like to change these to just arbitrary callbacks
     midi_to_keys[10] = Key::Space;
     midi_to_keys[25] = Key::Layout('w');
     midi_to_keys[35] = Key::Layout('a');
@@ -104,6 +106,7 @@ fn read_midi(queue: Arc<RwLock<VecDeque<Stroke>>>) -> Result<MidiInputConnection
                     println!("lmb");
                     en.mouse_click(enigo::MouseButton::Left);
                 }
+
 
                 // actual key presses
                 let key = midi_to_keys[data[1] as usize];
